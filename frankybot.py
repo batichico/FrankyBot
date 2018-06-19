@@ -370,7 +370,7 @@ def command_bye(m):
     bot.send_message(cid, str(despedida) + str(nun) + '\n\nMe parece que alguien quiere dejar la banda :V')
 
 
-@bot.message_handler(func=lambda message: True, content_types=['new_chat_member'])
+@bot.message_handler(func=lambda message: True, content_types=['new_chat_members'])
 def command_hi(m):
     cid = m.chat.id
     cname = m.chat.title
