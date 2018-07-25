@@ -158,6 +158,23 @@ def send_welcome(m):
         Estoy en beta aun no hay muchos comandos :V
     \
     """)
+	
+@bot.inline_handler(lambda query: query.query.startswith('spoiler') and len(query.query.split()) > 1)
+def function_spoiler(q):
+
+  cid = q.from_user.id
+  txt = q.query.split(None, 1)[1]
+
+  keyboard = types.InlineKeyboardMarkup()
+  keyboard.add(types.InlineKeyboardButton("Mostrar spoiler", callback_data="spoiler {}".format(txt)))
+
+  article = types.InlineQueryResultArticle(1, "Enviar spoiler", types.InputTextMessageContent("¡Ojo cuidado, SPOILER!"), reply_markup=keyboard)
+  bot.answer_inline_query(q.id, [article], cache_time=1)
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith('spoiler'))
+def function_button(call):
+  spoiler = call.data.split(None, 1)[1]
+  bot.answer_callback_query(call.id, spoiler, show_alert=True)
 
 @bot.message_handler(commands=['juego']) # Indicamos que lo siguiente va a controlar el comando '/miramacho'
 def juego(m): # Definimos una función que resuleva lo que necesitemos.
