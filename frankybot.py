@@ -25,7 +25,10 @@ from votosFunc import*
 now = datetime.now()
 horaPole= now.replace(hour=22, minute=6,second=59,microsecond=0)
 
-TOKEN = '207710095:AAFLkJ_-GrMAoHitMN-brhSbOyy-DfZjhys' # Nuestro tokken del bot (el que @BotFather nos dió).
+TOKEN = os.getenv('TOKEN', None) 
+if not TOKEN:
+    print("Please set TOKEN variable.")
+    sys.exit(1)
 
 bot = telebot.TeleBot(TOKEN) # Creamos el objeto de nuestro bot.
 #############################################
