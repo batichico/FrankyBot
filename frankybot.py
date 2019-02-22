@@ -19,14 +19,24 @@ import urllib
 
 import sys
 
+from votosFunc import*
+
 
 now = datetime.now()
 horaPole= now.replace(hour=22, minute=6,second=59,microsecond=0)
 
-TOKEN = '[Telegram Bot TOKEN]' # Nuestro tokken del bot (el que @BotFather nos dió).
+TOKEN = '207710095:AAFLkJ_-GrMAoHitMN-brhSbOyy-DfZjhys' # Nuestro tokken del bot (el que @BotFather nos dió).
 
 bot = telebot.TeleBot(TOKEN) # Creamos el objeto de nuestro bot.
 #############################################
+
+votaKeyboard = types.InlineKeyboardMarkup()
+votaKeyboard.add(types.InlineKeyboardButton('0', callback_data='v 0'),
+           types.InlineKeyboardButton('1', callback_data='v 1'),types.InlineKeyboardButton('2', callback_data='v 2'),
+           types.InlineKeyboardButton('3', callback_data='v 3'),types.InlineKeyboardButton('4', callback_data='v 4'),
+           types.InlineKeyboardButton('5', callback_data='v 5'),types.InlineKeyboardButton('6', callback_data='v 6'),
+           types.InlineKeyboardButton('7', callback_data='v 7'),types.InlineKeyboardButton('8', callback_data='v 8'),
+           types.InlineKeyboardButton('9', callback_data='v 9'),types.InlineKeyboardButton('10', callback_data='v 10'))
 
 
 
@@ -87,6 +97,27 @@ def mangapdf(m): # Definimos una función que resuleva lo que necesitemos.
     #crear una variable 'myspider (que es la clase de arriba) y pasaremos como argumentos  'http://www.anzanime.club/one-piece-manga-' + nombre + '' y funcion = 1
 
 
+
+'''
+@bot.message_handler(commands=['ruleta'])
+def ruleta(message):
+
+  cid = message.chat.id
+  nombreUsuario = message.from_user.username
+  idUsuario = message.from_user.id
+  rnd = randrange(0, int(5))
+
+  if rnd == 4:
+    bot.send_message(cid, "Pummmm tas muelto @" + nombreUsuario )
+    bot.kick_chat_member(cid,idUsuario)
+    botunban_chat_member(cid, idUsuario)
+
+  else:
+
+    bot.send_message(cid, "Te has salvado amijo @" + nombreUsuario)
+'''
+
+
 #############################################
 
 #randommmmmmmmmmmmmmmmmmmmmmm
@@ -100,10 +131,36 @@ def mangapdf(m): # Definimos una función que resuleva lo que necesitemos.
 @bot.message_handler(commands=['ayudita', 'start'])
 def send_welcome(m):
         cid = m.chat.id
-        bot.send_message(cid, """\
-        Estoy en beta aun no hay muchos comandos :V
-    \
-    """)
+        x=m.text
+        parametro = ' '.join(x.split(" ")[1:])
+
+        if "imagen" in parametro.lower():
+            parametro = parametro.replace("imagen", "")
+        idImagen = parametro
+
+
+        #bot.send_message(cid,"idImagen:"+str(idImagen))
+        #bot.send_message(cid,str(parametro))
+
+        if parametro=="":
+            bot.send_message(cid, """\
+                Hola nakama, soy un bot que gestiona el grupo de One piece @OnepieceESP y también crea botones anti spoilers.\nPara usar el comando antispoiler sólo tienes que usar @Franky_bot spoiler y lo que quieras    \
+            """)
+        else:
+
+
+            #bot.send_message( cid, "id imagen:"+idImagen)
+            bot.send_photo( cid, idImagen)
+
+        #bot.send_message( cid, "id imagen:"+idImagen)
+
+
+#@bot.message_handler(commands=['malzi']) # Indicamos que lo siguiente va a controlar el comando '/miramacho'
+#def command_malzi(m): # Definimos una función que resuleva lo que necesitemos.
+
+        #cid = m.chat.id # Guardamos el ID de la conversación para poder responder.
+        #bot.send_message( cid, 'No me hables de ese le pone ebola a mis torres y las derrite puto malz de la polla comeme el rabo si me escuchas destruire el vacio entero para matarte cabrón :v') # Con la función 'send_message()' del bot, enviamos al ID almacenado el texto que queremos.bot
+        #bot.send_photo( cid, open( 'malz.jpg', 'rb'))
 
 
 
@@ -149,32 +206,42 @@ def pole(message):
         #cid = m.chat.id # Guardamos el ID de la conversación para poder responder.
         #bot.send_audio( cid, open( 'brah.ogg', 'rb'))
 
+@bot.message_handler(commands=['vota'])
+def vota(m):
+
+  cid = m.chat.id
+  idMessage = m.message_id
+  mensaje = m.text
+  peticion = mensaje.split(None, 1)[1]
+  texto = "Votad *{}* del 0 al 10.\n*Puntos*: 0\n*Votantes*: 0\n*Nota*: 0"
+  msg = bot.send_message(cid, texto.format(peticion), reply_markup=votaKeyboard, parse_mode="Markdown")
+  crearVoto(cid, msg.message_id, peticion)
 
 
-@bot.message_handler(commands=['ayudita', 'start'])
-def send_welcome(m):
-        cid = m.chat.id
-        bot.send_message(cid, """\
-        Estoy en beta aun no hay muchos comandos :V
-    \
-    """)
-	
-@bot.inline_handler(lambda query: query.query.startswith('spoiler') and len(query.query.split()) > 1)
-def function_spoiler(q):
+@bot.callback_query_handler(func=lambda call: call.data.startswith('v '))
+def callback_handlerCuentas(call):
+  puntuacion = call.data.split()[1]
+  cid = call.message.chat.id # id del chat
+  mid = call.message.message_id # id del mensaje a editar
+  nomusu = call.from_user.first_name # nombre del usuario pulsado
+  idusu = call.from_user.id # id usuario pulsado
+  actualizarVoto(cid, mid, puntuacion, nomusu, idusu)
+  nuevo_texto = getNuevoTexto(cid, mid)
+  bot.edit_message_text(nuevo_texto, cid, mid, reply_markup=votaKeyboard, parse_mode="Markdown")
 
-  cid = q.from_user.id
-  txt = q.query.split(None, 1)[1]
 
-  keyboard = types.InlineKeyboardMarkup()
-  keyboard.add(types.InlineKeyboardButton("Mostrar spoiler", callback_data="spoiler {}".format(txt)))
 
-  article = types.InlineQueryResultArticle(1, "Enviar spoiler", types.InputTextMessageContent("¡Ojo cuidado, SPOILER!"), reply_markup=keyboard)
-  bot.answer_inline_query(q.id, [article], cache_time=1)
 
-@bot.callback_query_handler(func=lambda call: call.data.startswith('spoiler'))
-def function_button(call):
-  spoiler = call.data.split(None, 1)[1]
-  bot.answer_callback_query(call.id, spoiler, show_alert=True)
+@bot.message_handler(commands=['mangaday']) # Indicamos que lo siguiente va a controlar el comando '/miramacho'
+def spoilerDay(m): # Definimos una función que resuleva lo que necesitemos.
+
+    cid = m.chat.id # Guardamos el ID de la conversación para poder responder.
+    with open('manga/manga.txt', 'r') as manga:
+        manga = manga.read()
+
+    bot.send_message(cid, "Hoy es el día de Manga, preparad vuestros ojetes y salir pitando del grupo si no habeís leído el capítulo de hoy. Hoy se debate el capítulo, te recomiendo que no leas el grupo hasta que estés al día, sino te comeras unos SPOILER presiosos 😈.\nEscribid @franky_bot spoiler y el mensaje que queráis para enviar los spoilers.\nAquí os dejo el manga de hoy: "+str(manga))
+    bot.send_audio( cid, open( 'audios/purga.ogg', 'rb'))
+
 
 @bot.message_handler(commands=['juego']) # Indicamos que lo siguiente va a controlar el comando '/miramacho'
 def juego(m): # Definimos una función que resuleva lo que necesitemos.
@@ -302,9 +369,79 @@ def step_envio(m):
 
 '''
 
+@bot.message_handler(commands=['spoilergrupo'])
+def spoilerGrupo(m):
+  cid = m.chat.id
+
+  msg = bot.send_message(cid, "Envíame la foto que quieras pasar")
+  bot.register_next_step_handler(msg, step_foto)
+
+def step_foto(m):
+
+  cid = m.chat.id
+  #bot.send_message(cid, str(m))
+  if m.content_type == "photo":
+    fileID = m.photo[-1].file_id
+    msgCallBack= "imagen " +str(fileID)
+
+    #bot.send_message(cid,msgCallBack)
+
+    keyboard = types.InlineKeyboardMarkup()
+    keyboard.add(types.InlineKeyboardButton("Enviar imagen", switch_inline_query="imagen {}".format(fileID)))
+
+    bot.send_photo( cid, fileID, reply_markup=keyboard)
+
+
+@bot.inline_handler(lambda query: query.query.startswith('imagen') and len(query.query.split()) > 1)
+def function_spoiler(q):
+
+  cid = q.from_user.id
+  txt = q.query.split(None, 1)[1]
+
+  keyboard = types.InlineKeyboardMarkup()
+  keyboard.add(types.InlineKeyboardButton("Mostrar imagen", callback_data="imagen {}".format(txt)))
+
+  article = types.InlineQueryResultArticle(1, "Enviar imagen", types.InputTextMessageContent("¡Ojo cuidado, IMAGEN CON SPOILER!"), reply_markup=keyboard)
+  bot.answer_inline_query(q.id, [article], cache_time=1)
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith('imagen'))
+def function_spoilerImagen(call):
+    spoiler = call.data.split(None, 1)[1]
+    spoiler = str(spoiler)
+    bot.answer_callback_query(call.id, 'imagen', url = 'https://t.me/franky_bot?start=imagen'+spoiler)
+
 
 
 ########################################guardar en fichero
+
+@bot.inline_handler(lambda query: query.query == 'memes')
+def query_text(inline_query):
+    try:
+        r = types.InlineQueryResultAudio('1','AwADBAAD-AMAAjB8GFBncLJe-6UrIwI','DISGUSTING!' )
+        r2 = types.InlineQueryResultAudio('2','AwADBAAD-AMAAjB8GFBncLJe-6UrIwI','two bros..' )
+        #r3 = types.InlineQueryResultAudio('3','CQADBAADqAQAAnpAGVBH1IYD5ZjRUQI','you cannot' )
+        bot.answer_inline_query(inline_query.id, [r, r2])
+    except Exception as e:
+        print(e)
+
+
+@bot.inline_handler(lambda query: query.query.startswith('spoiler') and len(query.query.split()) > 1)
+def function_spoiler(q):
+
+  cid = q.from_user.id
+  txt = q.query.split(None, 1)[1]
+
+  keyboard = types.InlineKeyboardMarkup()
+  keyboard.add(types.InlineKeyboardButton("Mostrar spoiler", callback_data="spoiler {}".format(txt)))
+
+  article = types.InlineQueryResultArticle(1, "Enviar spoiler", types.InputTextMessageContent("¡Ojo cuidado, SPOILER!"), reply_markup=keyboard)
+  bot.answer_inline_query(q.id, [article], cache_time=1)
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith('spoiler'))
+def function_spoilerCall(call):
+  spoiler = call.data.split(None, 1)[1]
+  bot.answer_callback_query(call.id, spoiler, show_alert=True)
+
 
 
 
@@ -316,7 +453,7 @@ def tempo(m): # Definimos una función que resuleva lo que necesitemos.
     x=m.text
     nombre = ' '.join(x.split(" ")[1:])
     if not x == '/tempo' and not nombre.isdigit():
-        params = { "q" : nombre, "lang" : "es", "appid" : "[Weather TOKEN]"  }
+        params = { "q" : nombre, "lang" : "es", "appid" : "b86ca3770ec717b14692f0e0107243be"  }
         data = requests.get("http://api.openweathermap.org/data/2.5/weather", params)
         ciudad = data.json()['name']
         tiempo = data.json()['weather'][0]['description'].capitalize()

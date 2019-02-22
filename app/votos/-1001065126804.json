@@ -1,0 +1,285 @@
+[
+    {
+        "idMensaje": 48980,
+        "descripcion": "comando voto",
+        "votos": [
+            {
+                "nomUsuario": "\ud83e\udd87 Batichico \ud83e\udd87 @princebot",
+                "idUsuario": 239822769,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "David",
+                "idUsuario": 142040715,
+                "puntuacion": "5"
+            },
+            {
+                "nomUsuario": "Dave \ud83d\ude08\u264e\ud83d\ude07",
+                "idUsuario": 309913184,
+                "puntuacion": "0"
+            },
+            {
+                "nomUsuario": "\u144e\u13c6\u1455\u176a \ud83d\udca9",
+                "idUsuario": 327967164,
+                "puntuacion": "0"
+            },
+            {
+                "nomUsuario": "Stic",
+                "idUsuario": 568029885,
+                "puntuacion": "0"
+            },
+            {
+                "nomUsuario": "@bot_Chelos",
+                "idUsuario": 12813859,
+                "puntuacion": "0"
+            },
+            {
+                "nomUsuario": "Javier",
+                "idUsuario": 446108573,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "Javi",
+                "idUsuario": 158395280,
+                "puntuacion": "8"
+            },
+            {
+                "nomUsuario": "Isma - El T\u00edo Largometrajes",
+                "idUsuario": 113192539,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "Elevatione",
+                "idUsuario": 396226178,
+                "puntuacion": "0"
+            },
+            {
+                "nomUsuario": "Roig",
+                "idUsuario": 262903518,
+                "puntuacion": "0"
+            },
+            {
+                "nomUsuario": "Julian",
+                "idUsuario": 187077865,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "Koke",
+                "idUsuario": 318667217,
+                "puntuacion": "0"
+            },
+            {
+                "nomUsuario": "\u1dbb \u1d49 \u02b3 \u1d52",
+                "idUsuario": 194587650,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "Adri",
+                "idUsuario": 577356320,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "EKKO \u23ee",
+                "idUsuario": 695297026,
+                "puntuacion": "6"
+            },
+            {
+                "nomUsuario": "LFX",
+                "idUsuario": 235017306,
+                "puntuacion": "0"
+            },
+            {
+                "nomUsuario": "Yael",
+                "idUsuario": 366380917,
+                "puntuacion": "9"
+            },
+            {
+                "nomUsuario": "surwable",
+                "idUsuario": 501851719,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "Clonka",
+                "idUsuario": 43538075,
+                "puntuacion": "6"
+            },
+            {
+                "nomUsuario": "Mr. Nobody",
+                "idUsuario": 305806046,
+                "puntuacion": "7"
+            },
+            {
+                "nomUsuario": "Santu",
+                "idUsuario": 590813759,
+                "puntuacion": "10"
+            }
+        ]
+    },
+    {
+        "idMensaje": 49036,
+        "descripcion": "hype por el manga",
+        "votos": [
+            {
+                "nomUsuario": "Julian",
+                "idUsuario": 187077865,
+                "puntuacion": "8"
+            },
+            {
+                "nomUsuario": "@bot_Chelos",
+                "idUsuario": 12813859,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "Roig",
+                "idUsuario": 262903518,
+                "puntuacion": "0"
+            },
+            {
+                "nomUsuario": "\ud83e\udd87 Batichico \ud83e\udd87 @princebot",
+                "idUsuario": 239822769,
+                "puntuacion": "7"
+            },
+            {
+                "nomUsuario": "Koke",
+                "idUsuario": 318667217,
+                "puntuacion": "8"
+            },
+            {
+                "nomUsuario": "\u1dbb \u1d49 \u02b3 \u1d52",
+                "idUsuario": 194587650,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "Elevatione",
+                "idUsuario": 396226178,
+                "puntuacion": "0"
+            },
+            {
+                "nomUsuario": "Adri",
+                "idUsuario": 577356320,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "EKKO \u23ee",
+                "idUsuario": 695297026,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "LFX",
+                "idUsuario": 235017306,
+                "puntuacion": "0"
+            },
+            {
+                "nomUsuario": "Carlos",
+                "idUsuario": 343755797,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "surwable",
+                "idUsuario": 501851719,
+                "puntuacion": "5"
+            },
+            {
+                "nomUsuario": "Vick",
+                "idUsuario": 139208642,
+                "puntuacion": "9"
+            },
+            {
+                "nomUsuario": "Javier",
+                "idUsuario": 446108573,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "Dsvid \ud83c\udf90",
+                "idUsuario": 310128916,
+                "puntuacion": "10"
+            }
+        ]
+    },
+    {
+        "idMensaje": 49038,
+        "descripcion": "bati buen admin",
+        "votos": [
+            {
+                "nomUsuario": "Julian",
+                "idUsuario": 187077865,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "Roig",
+                "idUsuario": 262903518,
+                "puntuacion": "0"
+            },
+            {
+                "nomUsuario": "\ud83e\udd87 Batichico \ud83e\udd87 @princebot",
+                "idUsuario": 239822769,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "Koke",
+                "idUsuario": 318667217,
+                "puntuacion": "1"
+            },
+            {
+                "nomUsuario": "\u1dbb \u1d49 \u02b3 \u1d52",
+                "idUsuario": 194587650,
+                "puntuacion": "9"
+            },
+            {
+                "nomUsuario": "Adri",
+                "idUsuario": 577356320,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "Javi",
+                "idUsuario": 158395280,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "LFX",
+                "idUsuario": 235017306,
+                "puntuacion": "7"
+            },
+            {
+                "nomUsuario": "Carlos",
+                "idUsuario": 343755797,
+                "puntuacion": "0"
+            },
+            {
+                "nomUsuario": "surwable",
+                "idUsuario": 501851719,
+                "puntuacion": "6"
+            },
+            {
+                "nomUsuario": "Javier",
+                "idUsuario": 446108573,
+                "puntuacion": "0"
+            },
+            {
+                "nomUsuario": "@bot_Chelos",
+                "idUsuario": 12813859,
+                "puntuacion": "5"
+            },
+            {
+                "nomUsuario": "Elevatione",
+                "idUsuario": 396226178,
+                "puntuacion": "0"
+            },
+            {
+                "nomUsuario": "Barba",
+                "idUsuario": 210471006,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "Dave \ud83d\ude08\u264e\ud83d\ude07",
+                "idUsuario": 309913184,
+                "puntuacion": "10"
+            },
+            {
+                "nomUsuario": "Yael",
+                "idUsuario": 366380917,
+                "puntuacion": "10"
+            }
+        ]
+    }
+]
